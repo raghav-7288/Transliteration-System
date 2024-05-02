@@ -24,6 +24,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-wp' , '--wandb_project', help='Project name used to track experiments in Weights & Biases dashboard' , type=str, default='DL-Assignment-3')
 parser.add_argument('-we', '--wandb_entity' , help='Wandb Entity used to track experiments in the Weights & Biases dashboard.' , type=str, default='cs23m053')
 parser.add_argument('-dp', '--dataset_path' , help='Specify path to dataset ../aksharantar_sampled.' , type=str, default='/kaggle/input/dl-ass3/aksharantar_sampled')
+parser.add_argument('-lg', '--language' , help='Specify the language.' , type=str, default='hin')
 parser.add_argument('-ct', '--cell_type' , help='Type of cell.' , type=str,choices = ['RNN', 'LSTM', 'GRU'], default='LSTM')
 parser.add_argument('-bd', '--bi_dir' , help="choices: ['True', 'False']",choices = [True, False], type=bool, default=True)
 parser.add_argument('-nl', '--num_layers', help='Number of hidden layers used in feedforward neural network.',type=int, default=3)
@@ -875,7 +876,7 @@ def plot_attention_grid(model):
   plt.show()
 
 params = {
-    'language' : 'hin',
+    'language' : arguments.language,
     'dataset_path' : arguments.dataset_path,
     'embedding_size': arguments.embedding_size,
     'hidden_size': arguments.hidden_size,
