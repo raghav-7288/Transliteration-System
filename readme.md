@@ -115,12 +115,12 @@ To train the Seq2Seq model with different RNN cell types, use the `train.py` scr
 | Argument                 | Description                                                              | Default Value                               |
 | ------------------------ | ------------------------------------------------------------------------ | ------------------------------------------- |
 | -dp, --dataset_path      | Path to the data folder                                                  | '/kaggle/input/dl-ass3/aksharantar_sampled' |
-| -l, --lg                 | Language for which training is to be done                                | 'hin'                                       |
-| -emb, --embedding_size   | Embedding size                                                           | 256                                         |
+| -lg, --language          | Language for which training is to be done                                | 'hin'                                       |
+| -es, --embedding_size    | Embedding size                                                           | 256                                         |
 | -hs, --hidden_size       | Hidden size                                                              | 512                                         |
 | -nl, --num_layers        | Number of layers                                                         | 2                                           |
 | -ct, --cell_type         | Cell type (RNN, LSTM, GRU)                                               | 'LSTM'                                      |
-| -dr, --dropout           | Dropout rate                                                             | 0.3                                         |
+| -do, --dropout           | Dropout rate                                                             | 0.3                                         |
 | -lr, --learning_rate     | Learning rate                                                            | 0.01                                        |
 | -bs, --batch_size        | Batch size                                                               | 32                                          |
 | -ep, --num_epochs        | Number of epochs                                                         | 10                                          |
@@ -128,7 +128,7 @@ To train the Seq2Seq model with different RNN cell types, use the `train.py` scr
 | -bw, --beam_search_width | Beam search width                                                        | 1                                           |
 | -lp, --length_penalty    | Length penalty for beam search                                           | 0.6                                         |
 | -tf, --teacher_forcing   | Teacher forcing ratio                                                    | 0.7                                         |
-| -bi, --bi_dir            | Use bidirectional encoder                                                | True                                        |
+| -bd, --bi_dir            | Use bidirectional encoder                                                | True                                        |
 | -wl, --w_log             | Whether to log to WandB (1 for yes, 0 for no)                            | 0                                           |
 | -wp, --wandb_project     | Project name used to track experiments in Weights & Biases dashboard     | 'DL-Assignment-3'                           |
 | -we, --wandb_entity      | Wandb Entity used to track experiments in the Weights & Biases dashboard | 'cs23m053'                                  |
@@ -164,7 +164,11 @@ To use the Seq2Seq model with attention, follow the steps below:
 
 1. Import the necessary classes from the provided code.
 
-2. Initialize an instance of the `Encoder` class with the required parameters:
+2. Initialize an instance of the `Attention` class with the required parameter:
+
+   - `hidden_size`: Size of the hidden state.
+
+3. Initialize an instance of the `Encoder` class with the required parameters:
 
    - `input_size`: Size of the input vocabulary.
    - `embedding_size`: Size of the embedding layer.
@@ -173,10 +177,6 @@ To use the Seq2Seq model with attention, follow the steps below:
    - `dropout`: Dropout rate for regularization.
    - `bidirectional`: Boolean indicating whether the RNN is bidirectional.
    - `cell_type`: Type of RNN cell used ('LSTM', 'GRU', or 'RNN').
-
-3. Initialize an instance of the `Attention` class with the required parameter:
-
-   - `hidden_size`: Size of the hidden state.
 
 4. Initialize an instance of the `Decoder` class with the required parameters:
 
@@ -274,12 +274,12 @@ To use the Seq2Seq model with attention, follow the steps below:
 | Argument                 | Description                                                              | Default Value                                |
 | ------------------------ | ------------------------------------------------------------------------ | -------------------------------------------- |
 | -dp, --dataset_path      | Path to the data folder                                                  | '/kaggle/input/dl-ass3/aksharantar_sampled/' |
-| -l, --lg                 | Language for which training is to be done                                | 'hin'                                        |
-| -emb, --embedding_size   | Embedding size                                                           | 256                                          |
+| -lg, --language          | Language for which training is to be done                                | 'hin'                                        |
+| -es, --embedding_size    | Embedding size                                                           | 256                                          |
 | -hs, --hidden_size       | Hidden size                                                              | 512                                          |
 | -nl, --num_layers        | Number of layers                                                         | 3                                            |
 | -ct, --cell_type         | Cell type (RNN, LSTM, GRU)                                               | 'LSTM'                                       |
-| -dr, --dropout           | Dropout rate                                                             | 0.3                                          |
+| -do, --dropout           | Dropout rate                                                             | 0.3                                          |
 | -lr, --learning_rate     | Learning rate                                                            | 0.01                                         |
 | -bs, --batch_size        | Batch size                                                               | 32                                           |
 | -ep, --num_epochs        | Number of epochs                                                         | 10                                           |
@@ -287,7 +287,7 @@ To use the Seq2Seq model with attention, follow the steps below:
 | -bw, --beam_search_width | Beam search width                                                        | 1                                            |
 | -lp, --length_penalty    | Length penalty for beam search                                           | 0.6                                          |
 | -tf, --teacher_forcing   | Teacher forcing ratio                                                    | 0.7                                          |
-| -bi, --bi_dir            | Use bidirectional encoder                                                | True                                         |
+| -bd, --bi_dir            | Use bidirectional encoder                                                | True                                         |
 | -wl, --w_log             | Whether to log to WandB (1 for yes, 0 for no)                            | 0                                            |
 | -wp, --wandb_project     | Project name used to track experiments in Weights & Biases dashboard     | 'DL-Assignment-3'                            |
 | -we, --wandb_entity      | Wandb Entity used to track experiments in the Weights & Biases dashboard | 'cs23m053'                                   |
