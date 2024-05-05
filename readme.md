@@ -125,7 +125,7 @@ To train the Seq2Seq model with different RNN cell types, use the `train.py` scr
 | -bs, --batch_size        | Batch size                                                               | 32                                          |
 | -ep, --num_epochs        | Number of epochs                                                         | 10                                          |
 | -op, --optimizer         | Optimizer (adam, sgd, rmsprop, nadam, adagrad)                           | 'adagrad'                                   |
-| -bw, --beam_search_width | Beam search width                                                        | 1                                           |
+| -bw, --beam_width | Beam search width                                                        | 1                                           |
 | -lp, --length_penalty    | Length penalty for beam search                                           | 0.6                                         |
 | -tf, --teacher_forcing   | Teacher forcing ratio                                                    | 0.7                                         |
 | -bd, --bi_dir            | Use bidirectional encoder                                                | True                                        |
@@ -284,7 +284,7 @@ To use the Seq2Seq model with attention, follow the steps below:
 | -bs, --batch_size        | Batch size                                                               | 32                                           |
 | -ep, --num_epochs        | Number of epochs                                                         | 10                                           |
 | -op, --optimizer         | Optimizer (adam, sgd, rmsprop, nadam, adagrad)                           | 'adagrad'                                    |
-| -bw, --beam_search_width | Beam search width                                                        | 1                                            |
+| -bw, --beam_width | Beam search width                                                        | 1                                            |
 | -lp, --length_penalty    | Length penalty for beam search                                           | 0.6                                          |
 | -tf, --teacher_forcing   | Teacher forcing ratio                                                    | 0.7                                          |
 | -bd, --bi_dir            | Use bidirectional encoder                                                | True                                         |
