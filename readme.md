@@ -112,26 +112,26 @@ pip install torch numpy pandas tqdm wandb argparse
 
 To train the Seq2Seq model with different RNN cell types, use the `train.py` script with the following command-line arguments:
 
-| Argument                 | Description                                                              | Default Value                               |
-| ------------------------ | ------------------------------------------------------------------------ | ------------------------------------------- |
-| -dp, --dataset_path      | Path to the data folder                                                  | '/kaggle/input/dl-ass3/aksharantar_sampled' |
-| -lg, --language          | Language for which training is to be done                                | 'hin'                                       |
-| -es, --embedding_size    | Embedding size                                                           | 256                                         |
-| -hs, --hidden_size       | Hidden size                                                              | 512                                         |
-| -nl, --num_layers        | Number of layers                                                         | 2                                           |
-| -ct, --cell_type         | Cell type (RNN, LSTM, GRU)                                               | 'LSTM'                                      |
-| -do, --dropout           | Dropout rate                                                             | 0.3                                         |
-| -lr, --learning_rate     | Learning rate                                                            | 0.01                                        |
-| -bs, --batch_size        | Batch size                                                               | 32                                          |
-| -ep, --num_epochs        | Number of epochs                                                         | 10                                          |
-| -op, --optimizer         | Optimizer (adam, sgd, rmsprop, nadam, adagrad)                           | 'adagrad'                                   |
-| -bw, --beam_width | Beam search width                                                        | 1                                           |
-| -lp, --length_penalty    | Length penalty for beam search                                           | 0.6                                         |
-| -tf, --teacher_forcing   | Teacher forcing ratio                                                    | 0.7                                         |
-| -bd, --bi_dir            | Use bidirectional encoder                                                | True                                        |
-| -wl, --w_log             | Whether to log to WandB (1 for yes, 0 for no)                            | 0                                           |
-| -wp, --wandb_project     | Project name used to track experiments in Weights & Biases dashboard     | 'DL-Assignment-3'                           |
-| -we, --wandb_entity      | Wandb Entity used to track experiments in the Weights & Biases dashboard | 'cs23m053'                                  |
+| Argument               | Description                                                              | Default Value                               |
+| ---------------------- | ------------------------------------------------------------------------ | ------------------------------------------- |
+| -dp, --dataset_path    | Path to the data folder                                                  | '/kaggle/input/dl-ass3/aksharantar_sampled' |
+| -lg, --language        | Language for which training is to be done                                | 'hin'                                       |
+| -es, --embedding_size  | Embedding size                                                           | 256                                         |
+| -hs, --hidden_size     | Hidden size                                                              | 512                                         |
+| -nl, --num_layers      | Number of layers                                                         | 2                                           |
+| -ct, --cell_type       | Cell type (RNN, LSTM, GRU)                                               | 'LSTM'                                      |
+| -do, --dropout         | Dropout rate                                                             | 0.3                                         |
+| -lr, --learning_rate   | Learning rate                                                            | 0.01                                        |
+| -bs, --batch_size      | Batch size                                                               | 32                                          |
+| -ep, --num_epochs      | Number of epochs                                                         | 10                                          |
+| -op, --optimizer       | Optimizer (adam, sgd, rmsprop, nadam, adagrad)                           | 'adagrad'                                   |
+| -bw, --beam_width      | Beam search width                                                        | 1                                           |
+| -lp, --length_penalty  | Length penalty for beam search                                           | 0.6                                         |
+| -tf, --teacher_forcing | Teacher forcing ratio                                                    | 0.7                                         |
+| -bd, --bi_dir          | Use bidirectional encoder                                                | True                                        |
+| -wl, --w_log           | Whether to log to WandB (1 for yes, 0 for no)                            | 0                                           |
+| -wp, --wandb_project   | Project name used to track experiments in Weights & Biases dashboard     | 'DL-Assignment-3'                           |
+| -we, --wandb_entity    | Wandb Entity used to track experiments in the Weights & Biases dashboard | 'cs23m053'                                  |
 
 Example command to run the training script:
 
@@ -143,11 +143,11 @@ python train_vanilla.py -dp 'your/dataset/path/up/to/aksharantar_sampled' -lg 'h
 
 During training and validation, the following output metrics are provided:
 
-- **Train Accuracy Char**: The character-level accuracy of predictions on the training data.
-- **Train Average Loss**: The average loss calculated during training.
+- **Train Accuracy**: The character-level accuracy of predictions on the training data.
+- **Train Loss**: The average loss calculated during training.
 - **Validation Accuracy Char**: The character-level accuracy of predictions on the validation data.
-- **Validation Average Loss**: The average loss calculated during validation.
-- **Beam Val Word Accuracy**: The word-level accuracy of predictions on the validation data using beam search.
+- **Validation Loss**: The average loss calculated during validation.
+- **Validation Accuracy Word**: The word-level accuracy of predictions on the validation data using beam search.
 - **Correct Prediction**: The number of correct predictions out of the total validation data samples.
 
 These metrics provide insights into the performance of the Seq2Seq model during training and validation. Character-level accuracy measures how accurately the model predicts individual characters, while word-level accuracy assesses the correctness of entire output sequences.
@@ -271,26 +271,26 @@ To use the Seq2Seq model with attention, follow the steps below:
 
 ## Command-line Arguments
 
-| Argument                 | Description                                                              | Default Value                                |
-| ------------------------ | ------------------------------------------------------------------------ | -------------------------------------------- |
-| -dp, --dataset_path      | Path to the data folder                                                  | '/kaggle/input/dl-ass3/aksharantar_sampled/' |
-| -lg, --language          | Language for which training is to be done                                | 'hin'                                        |
-| -es, --embedding_size    | Embedding size                                                           | 256                                          |
-| -hs, --hidden_size       | Hidden size                                                              | 512                                          |
-| -nl, --num_layers        | Number of layers                                                         | 3                                            |
-| -ct, --cell_type         | Cell type (RNN, LSTM, GRU)                                               | 'LSTM'                                       |
-| -do, --dropout           | Dropout rate                                                             | 0.3                                          |
-| -lr, --learning_rate     | Learning rate                                                            | 0.01                                         |
-| -bs, --batch_size        | Batch size                                                               | 32                                           |
-| -ep, --num_epochs        | Number of epochs                                                         | 10                                           |
-| -op, --optimizer         | Optimizer (adam, sgd, rmsprop, nadam, adagrad)                           | 'adagrad'                                    |
-| -bw, --beam_width | Beam search width                                                        | 1                                            |
-| -lp, --length_penalty    | Length penalty for beam search                                           | 0.6                                          |
-| -tf, --teacher_forcing   | Teacher forcing ratio                                                    | 0.7                                          |
-| -bd, --bi_dir            | Use bidirectional encoder                                                | True                                         |
-| -wl, --w_log             | Whether to log to WandB (1 for yes, 0 for no)                            | 0                                            |
-| -wp, --wandb_project     | Project name used to track experiments in Weights & Biases dashboard     | 'DL-Assignment-3'                            |
-| -we, --wandb_entity      | Wandb Entity used to track experiments in the Weights & Biases dashboard | 'cs23m053'                                   |
+| Argument               | Description                                                              | Default Value                                |
+| ---------------------- | ------------------------------------------------------------------------ | -------------------------------------------- |
+| -dp, --dataset_path    | Path to the data folder                                                  | '/kaggle/input/dl-ass3/aksharantar_sampled/' |
+| -lg, --language        | Language for which training is to be done                                | 'hin'                                        |
+| -es, --embedding_size  | Embedding size                                                           | 256                                          |
+| -hs, --hidden_size     | Hidden size                                                              | 512                                          |
+| -nl, --num_layers      | Number of layers                                                         | 3                                            |
+| -ct, --cell_type       | Cell type (RNN, LSTM, GRU)                                               | 'LSTM'                                       |
+| -do, --dropout         | Dropout rate                                                             | 0.3                                          |
+| -lr, --learning_rate   | Learning rate                                                            | 0.01                                         |
+| -bs, --batch_size      | Batch size                                                               | 32                                           |
+| -ep, --num_epochs      | Number of epochs                                                         | 10                                           |
+| -op, --optimizer       | Optimizer (adam, sgd, rmsprop, nadam, adagrad)                           | 'adagrad'                                    |
+| -bw, --beam_width      | Beam search width                                                        | 1                                            |
+| -lp, --length_penalty  | Length penalty for beam search                                           | 0.6                                          |
+| -tf, --teacher_forcing | Teacher forcing ratio                                                    | 0.7                                          |
+| -bd, --bi_dir          | Use bidirectional encoder                                                | True                                         |
+| -wl, --w_log           | Whether to log to WandB (1 for yes, 0 for no)                            | 0                                            |
+| -wp, --wandb_project   | Project name used to track experiments in Weights & Biases dashboard     | 'DL-Assignment-3'                            |
+| -we, --wandb_entity    | Wandb Entity used to track experiments in the Weights & Biases dashboard | 'cs23m053'                                   |
 
 ## Example Usage
 
@@ -302,11 +302,11 @@ python train_attention.py -dp 'your/dataset/path/up/to/aksharantar_sampled' -lg 
 
 During training and validation, the following output metrics are provided:
 
-- **Train Accuracy Char**: The character-level accuracy of predictions on the training data.
-- **Train Average Loss**: The average loss calculated during training.
+- **Train Accuracy**: The character-level accuracy of predictions on the training data.
+- **Train Loss**: The average loss calculated during training.
 - **Validation Accuracy Char**: The character-level accuracy of predictions on the validation data.
-- **Validation Average Loss**: The average loss calculated during validation.
-- **Beam Val Word Accuracy**: The word-level accuracy of predictions on the validation data using beam search.
+- **Validation Loss**: The average loss calculated during validation.
+- **Validation Accuracy Word**: The word-level accuracy of predictions on the validation data using beam search.
 - **Correct Prediction**: The number of correct predictions out of the total validation data samples.
 
 These metrics provide insights into the performance of the Seq2Seq model during training and validation. Character-level accuracy measures how accurately the model predicts individual characters, while word-level accuracy assesses the correctness of entire output sequences.
